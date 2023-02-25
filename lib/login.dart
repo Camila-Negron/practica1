@@ -24,19 +24,40 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         SizedBox(height: 10.0),
         Container(
-            alignment: Alignment.centerLeft,
-            height: 60.0,
-            decoration: BoxDecoration(
-              color: Color(0xFF6CA8F1),
-              borderRadius: BorderRadius.circular(10.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 6.0,
-                  offset: Offset(0, 2),
-                ),
-              ],
-            )),
+          alignment: Alignment.centerLeft,
+          height: 60.0,
+          decoration: BoxDecoration(
+            color: Color(0xFF6CA8F1),
+            borderRadius: BorderRadius.circular(10.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 6.0,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.email,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Email',
+              hintStyle: TextStyle(
+                color: Colors.white54,
+                fontFamily: 'OpenSans',
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -68,6 +89,26 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ],
           ),
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Password',
+              hintStyle: TextStyle(
+                color: Colors.white54,
+                fontFamily: 'OpenSans',
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -80,8 +121,8 @@ class _LoginScreenState extends State<LoginScreen> {
       child: ElevatedButton(
         onPressed: () {
           //Navigator.push(
-            //context,
-            //MaterialPageRoute(builder: (context) => Lista()),
+          //context,
+          //MaterialPageRoute(builder: (context) => Lista()),
           //);
         },
         child: Text('Iniciar Sesión'),
