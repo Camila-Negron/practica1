@@ -120,10 +120,10 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-          //Navigator.push(
-          //context,
-          //MaterialPageRoute(builder: (context) => Lista()),
-          //);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Lista()),
+          );
         },
         child: Text('Iniciar Sesión'),
         style: ElevatedButton.styleFrom(
