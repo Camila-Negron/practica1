@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/painting/alignment.dart';
 
 class Formulario extends StatefulWidget {
   Formulario({Key? key}) : super(key: key);
@@ -63,16 +64,17 @@ class _FormularioState extends State<Formulario> {
 
   _crearDropDown(BuildContext context) {
     return DropdownButton<String>(
+      //margin: EdgeInsets.only(top: 20.0),
       value: dropdownValue,
       icon: const Icon(Icons.arrow_downward),
       elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
+      style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
       underline: Container(
+        alignment: Alignment.centerLeft,
         height: 2,
-        color: Colors.deepPurpleAccent,
+        color: Color.fromARGB(255, 87, 87, 88),
       ),
       onChanged: (String? value) {
-        // This is called when the user selects an item.
         setState(() {
           dropdownValue = value!;
         });
@@ -98,7 +100,7 @@ class _FormularioState extends State<Formulario> {
         },
         child: Text('Guardar'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 139, 33, 157),
+          primary: Color.fromARGB(255, 157, 62, 33),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -114,7 +116,7 @@ class _FormularioState extends State<Formulario> {
         onPressed: () => {},
         child: Text('Cancelar'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 139, 33, 157),
+          primary: Color.fromARGB(255, 157, 62, 33),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),

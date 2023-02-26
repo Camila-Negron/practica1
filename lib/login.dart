@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Text(
           'Email',
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(255, 0, 0, 0),
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
-              color: Colors.white,
+              color: Color.fromARGB(255, 0, 0, 0),
               fontFamily: 'OpenSans',
             ),
             decoration: InputDecoration(
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.white,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
               hintText: 'Enter your Email',
               hintStyle: TextStyle(
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Text(
           'Password',
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(255, 5, 5, 5),
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: TextField(
             obscureText: true,
             style: TextStyle(
-              color: Colors.white,
+              color: Color.fromARGB(255, 0, 0, 0),
               fontFamily: 'OpenSans',
             ),
             decoration: InputDecoration(
@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
               hintText: 'Enter your Password',
               hintStyle: TextStyle(
@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         child: Text('Iniciar Sesión'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 139, 33, 157),
+          primary: Color.fromARGB(255, 157, 62, 33),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -154,10 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFF73AEF5),
-                      Color(0xFF61A4F1),
-                      Color(0xFF478DE0),
-                      Color(0xFF398AE5),
+                      Color.fromARGB(255, 255, 255, 255),
                     ],
                     stops: [0.1, 0.4, 0.7, 0.9],
                   ),
@@ -177,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         'Sign In',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Color.fromARGB(255, 2, 2, 2),
                           fontFamily: 'OpenSans',
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,

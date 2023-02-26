@@ -20,6 +20,20 @@ class ListaT extends StatelessWidget {
       "estado": true
     },
   ];
+
+  static final List<Map<String, dynamic>> tiempos = [
+    {
+      "nombre": "tarea uno",
+      "descripcion": "descripc tarea uno",
+      "estado": false
+    },
+    {
+      "nombre": "tarea dos",
+      "descripcion": "descripc tarea dos",
+      "estado": true
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +42,7 @@ class ListaT extends StatelessWidget {
       ),
       body: /*(List<Map<String, dynamic>>?ListView())*/
           ListView(children: _crearItem()),
+      //ListView(children: _crearItem()),
       //ListView(children: _crearTiempo())
 
       /*:
@@ -54,9 +69,9 @@ class ListaT extends StatelessWidget {
 
   /*List<Widget> _crearTiempo() {
     List<Widget> temporal = [];
-    for (Map<String, dynamic> tarea in tareas) {
+    for (Map<String, dynamic> tiempo in tiempos) {
       Widget item = ListTile(
-        title: Text("${tarea["nombre"]}"),
+        title: Text("${tiempo["fecha"]}"),
       );
       temporal.add(item);
     }
