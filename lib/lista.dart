@@ -28,6 +28,8 @@ class ListaT extends StatelessWidget {
       ),
       body: /*(List<Map<String, dynamic>>?ListView())*/
           ListView(children: _crearItem()),
+      //ListView(children: _crearTiempo())
+
       /*:
       Center(
         child: Text("No tienes tareas registradas"),
@@ -49,4 +51,15 @@ class ListaT extends StatelessWidget {
     }
     return temporal;
   }
+
+  /*List<Widget> _crearTiempo() {
+    List<Widget> temporal = [];
+    for (Map<String, dynamic> tarea in tareas) {
+      Widget item = ListTile(
+        title: Text("${tarea["nombre"]}"),
+      );
+      temporal.add(item);
+    }
+    return temporal;
+  }*/
 }
