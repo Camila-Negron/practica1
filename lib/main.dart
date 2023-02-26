@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practica1/login.dart';
+import 'package:practica1/formulario.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginScreen(),
+      title: "tareas",
+      initialRoute: LoginScreen.nombrePagina,
+      routes: {
+        LoginScreen.nombrePagina: (BuildContext context) => LoginScreen(),
+        Formulario.nombrePagina: (BuildContext context) => Formulario(),
+      },
     );
   }
 }

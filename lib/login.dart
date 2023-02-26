@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
+  static final nombrePagina = "loginScreen";
 }
 
 class _LoginScreenState extends State<LoginScreen> {

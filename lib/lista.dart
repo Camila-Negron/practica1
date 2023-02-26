@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 
 class Lista extends StatefulWidget {
   const Lista({Key? key}) : super(key: key);
+    static final nombrePagina = "listado"; 
+   //@override
+   //_ListaState createState() => _ListanState();
+}
 
   static final List<Map<String, dynamic>> tareas=[
     {
       "nombre":"tarea uno",
       "descripcion":"descripc tarea uno",
-      "estado":"pendiente"
+      "estado":false
+    },
+    {
+      "nombre":"tarea dos",
+      "descripcion":"descripc tarea dos",
+      "estado":true
     },
   ];
   @override
@@ -16,8 +25,18 @@ class Lista extends StatefulWidget {
       appBar: AppBar(
         title: Text("Lista"),
       ),
-      body: ListView(
+      body: /*(List<Map<String, dynamic>>?ListView())*/
+      ListView(
         children: _crearItem()
+      ),/*:
+      Center(
+        child: Text("No tienes tareas registradas"),
+      ),*/
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {},
+        child:Icon(
+          Icons.add
+        ),
       ),
     ); 
   }
