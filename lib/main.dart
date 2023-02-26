@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practica1/login.dart';
+import 'package:practica1/lista.dart';
 import 'package:practica1/formulario.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: LoginScreen.nombrePagina,
       routes: {
         LoginScreen.nombrePagina: (BuildContext context) => LoginScreen(),
+        ListaT.nombrePagina: (BuildContext context) => ListaT(),
         Formulario.nombrePagina: (BuildContext context) => Formulario(),
       },
     );

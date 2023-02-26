@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Lista()),
+            MaterialPageRoute(builder: (context) => ListaT()),
           );
         },
         child: Text('Iniciar Sesión'),
