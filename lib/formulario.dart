@@ -7,7 +7,7 @@ class Formulario extends StatefulWidget {
   static final nombrePagina = "formulario";
 }
 
-const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+const List<String> list = <String>['Trabajo', 'Casa', 'Personal'];
 
 class _FormularioState extends State<Formulario> {
   final idForm = GlobalKey<FormState>();
