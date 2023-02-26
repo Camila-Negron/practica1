@@ -10,8 +10,34 @@ class Formulario extends StatefulWidget {
 class _FormularioState extends State<Formulario> {
    @override
    Widget build(BuildContext context) {
-    return Container(
-      child: Text("pagina de formulario"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Formulario"),
+      ),
+      body: Form(
+        child: Column(
+          children: <Widget>[
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: "nombre de la tarea"
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                top:20.0
+              ),
+              child: TextFormField(
+                maxLines: null,
+                decoration: InputDecoration(
+                  hintText: "fecha de cumplimiento"
+                ),
+              ),
+            ),
+            
+          
+        )
+          
+      ),
     );
    }
 }

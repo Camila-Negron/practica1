@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:practica1/formulario.dart';
+
 class ListaT extends StatelessWidget {
   const ListaT({Key? key}) : super(key: key);
   static final nombrePagina = "listado";
@@ -31,7 +33,7 @@ class ListaT extends StatelessWidget {
         child: Text("No tienes tareas registradas"),
       ),*/
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => Navigator.pushNamed(context, Formulario.nombrePagina),
         child: Icon(Icons.add),
       ),
     );
