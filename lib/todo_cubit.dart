@@ -1,18 +1,23 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-
-part 'todo_state.dart';
+import 'package:meta/meta.dart';
+import 'package:practica1/todo_state.dart';
 
 class TodoCubit extends Cubit<TodoState> {
-  TodoCubit() : super(TodoState([]));
+  TodoCubit() : super(TodoState.empty());
 
   void addTask(String task) {
-    List<String> updatedTasks = List.from(state.tasks)..add(task);
-    emit(TodoState(updatedTasks));
+    final updatedTasks = state.tasks..add(task);
+    emit(state.copyWith(tasks: updatedTasks));
   }
 
-  void addTaskDate(String newTaskDate) {
-    List<String> updatedTasksDate = List.from(state.tasks)..add(newTaskDate);
-    emit(TodoState(updatedTasksDate));
+  void addTaskDate(String date) {
+    final updatedTaskDates = state.taskDates..add(date);
+    emit(state.copyWith(taskDates: updatedTaskDates));
+  }
+
+  void saveTask(String task, String taskDate) {
+    final updatedTasks = state.tasks..add(task);
+    final updatedTaskDates = state.taskDates..add(taskDate);
+    emit(state.copyWith(tasks: updatedTasks, taskDates: updatedTaskDates));
   }
 }

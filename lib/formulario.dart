@@ -6,6 +6,15 @@ class TodoFormScreen extends StatelessWidget {
   static final nombrePagina = "formulario";
   final TextEditingController _taskController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
+
+  void _saveTask(BuildContext context) {
+    String task = _taskController.text;
+    String taskDate = _dateController.text;
+    context.read<TodoCubit>().addTask(task);
+    context.read<TodoCubit>().addTaskDate(taskDate);
+    Navigator.pop(context, '$task - $taskDate');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,11 +58,7 @@ class TodoFormScreen extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      String task = _taskController.text;
-                      context.read<TodoCubit>().addTask(task);
-                      String newTaskDate = _dateController.text;
-                      context.read<TodoCubit>().addTaskDate(newTaskDate);
-                      Navigator.pop(context, '$task - $newTaskDate');
+                      _saveTask(context);
                     },
                     child: Text('Guardar'),
                   ),

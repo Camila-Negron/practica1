@@ -1,21 +1,22 @@
-part of 'todo_cubit.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
+@immutable
 class TodoState extends Equatable {
   final List<String> tasks;
+  final List<String> taskDates;
 
-  const TodoState(this.tasks);
+  TodoState({required this.tasks, required this.taskDates});
+
+  TodoState.empty()
+      : tasks = [],
+        taskDates = [];
 
   @override
-  List<Object> get props => [tasks];
+  List<Object?> get props => [tasks, taskDates];
+
+  TodoState copyWith({List<String>? tasks, List<String>? taskDates}) {
+    return TodoState(
+        tasks: tasks ?? this.tasks, taskDates: taskDates ?? this.taskDates);
+  }
 }
-
-// Definir un cubit para manejar las acciones relacionadas con la lista de tareas
-//class TodoListCubit extends Cubit<TodoListState> {
-  //TodoListCubit() : super(TodoListState(tasks: []));
-
- // void addTask(String newTask) {
-    //final currentTasks = state.tasks;
-    //final updatedTasks = [...currentTasks, newTask];
-    //emit(TodoListState(tasks: updatedTasks));
-  //}
-//}
