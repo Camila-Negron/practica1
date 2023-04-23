@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/painting/alignment.dart';
 
 class Formulario extends StatefulWidget {
-  Formulario({Key? key}) : super(key: key);
-  _FormularioState createState() => _FormularioState();
   static final nombrePagina = "formulario";
+  @override
+  _FormularioState createState() => _FormularioState();
 }
 
 const List<String> list = <String>['Trabajo', 'Casa', 'Personal'];
 
 class _FormularioState extends State<Formulario> {
-  final idForm = GlobalKey<FormState>();
+  //final idForm = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final dateController = TextEditingController();
 
   Map<String, dynamic> nuevaTarea = {};
 
@@ -25,14 +27,13 @@ class _FormularioState extends State<Formulario> {
       body: Container(
         margin: EdgeInsets.all(20.0),
         child: Form(
-          key: idForm,
+          //key: idForm,
           child: Column(
             children: <Widget>[
               _crearNombreTarea(),
               _crearFecha(),
               _crearDropDown(context),
-              _crearBotonGuardar(context),
-              _crearBotonCancelar()
+              _crearBotones(context),
             ],
           ),
         ),
@@ -41,25 +42,23 @@ class _FormularioState extends State<Formulario> {
   }
 
   _crearNombreTarea() {
-    return TextFormField(
-      onSaved: (valor) {
-        nuevaTarea["nombre"] = valor;
-      },
-      decoration: InputDecoration(hintText: "nombre de la tarea"),
+    return TextField(
+      decoration: InputDecoration(
+        labelText: 'Nombre de la tarea',
+      ),
+      controller: nameController,
     );
+    SizedBox(height: 16.0);
   }
 
   _crearFecha() {
-    return Container(
-      margin: EdgeInsets.only(top: 20.0),
-      child: TextFormField(
-        onSaved: (valor) {
-          nuevaTarea["fecha"] = valor;
-        },
-        maxLines: null,
-        decoration: InputDecoration(hintText: "fecha de cumplimiento"),
+    return TextField(
+      decoration: InputDecoration(
+        labelText: 'Fecha de cumplimiento',
       ),
+      controller: dateController,
     );
+    SizedBox(height: 16.0);
   }
 
   _crearDropDown(BuildContext context) {
@@ -88,40 +87,29 @@ class _FormularioState extends State<Formulario> {
     );
   }
 
-  _crearBotonGuardar(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 20.0),
-      child: ElevatedButton(
-        onPressed: () {
-          idForm.currentState!.save();
-          nuevaTarea["estado"] = false;
-
-          Navigator.pop(context);
-        },
-        child: Text('Guardar'),
-        style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 157, 62, 33),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+  _crearBotones(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Cancelar'),
           ),
         ),
-      ),
-    );
-  }
-
-  _crearBotonCancelar() {
-    return Container(
-      margin: EdgeInsets.only(top: 20.0),
-      child: ElevatedButton(
-        onPressed: () => {},
-        child: Text('Cancelar'),
-        style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 157, 62, 33),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+        SizedBox(width: 16.0),
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {
+              String newTaskName = nameController.text;
+              String newTaskDate = dateController.text;
+              Navigator.pop(context, '$newTaskName - $newTaskDate');
+            },
+            child: Text('Guardar'),
           ),
         ),
-      ),
+      ],
     );
   }
 }

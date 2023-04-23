@@ -10,107 +10,43 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passController.dispose();
+    super.dispose();
+  }
 
   Widget _buildEmailTF() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Text(
-          'Email',
-          style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
+        TextField(
+          decoration: InputDecoration(
+            labelText: 'Email',
           ),
+          controller: emailController,
         ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          height: 60.0,
-          decoration: BoxDecoration(
-            color: Color(0xFF6CA8F1),
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 6.0,
-                offset: Offset(0, 2),
-              ),
-            ],
-          ),
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0),
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.email,
-                color: Color.fromARGB(255, 0, 0, 0),
-              ),
-              hintText: 'Enter your Email',
-              hintStyle: TextStyle(
-                color: Colors.white54,
-                fontFamily: 'OpenSans',
-              ),
-            ),
-          ),
-        ),
+        SizedBox(height: 16.0),
       ],
     );
   }
 
   Widget _buildPasswordTF() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Text(
-          'Password',
-          style: TextStyle(
-            color: Color.fromARGB(255, 5, 5, 5),
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
+        TextField(
+          decoration: InputDecoration(
+            labelText: 'Password',
           ),
+          controller: passController,
+          obscureText: true,
         ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          height: 60.0,
-          decoration: BoxDecoration(
-            color: Color(0xFF6CA8F1),
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 6.0,
-                offset: Offset(0, 2),
-              ),
-            ],
-          ),
-          child: TextField(
-            obscureText: true,
-            style: TextStyle(
-              color: Color.fromARGB(255, 0, 0, 0),
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
-                color: Color.fromARGB(255, 0, 0, 0),
-              ),
-              hintText: 'Enter your Password',
-              hintStyle: TextStyle(
-                color: Colors.white54,
-                fontFamily: 'OpenSans',
-              ),
-            ),
-          ),
-        ),
+        SizedBox(height: 16.0),
       ],
     );
   }
@@ -128,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         child: Text('Iniciar Sesión'),
         style: ElevatedButton.styleFrom(
-          primary: Color.fromARGB(255, 157, 62, 33),
+          //primary: Color.fromARGB(255, 157, 62, 33),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -146,20 +82,20 @@ class _LoginScreenState extends State<LoginScreen> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Stack(
             children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color.fromARGB(255, 255, 255, 255),
-                    ],
-                    stops: [0.1, 0.4, 0.7, 0.9],
-                  ),
-                ),
-              ),
+              //Container(
+              //height: double.infinity,
+              //width: double.infinity,
+              //decoration: BoxDecoration(
+              //gradient: LinearGradient(
+              //begin: Alignment.topCenter,
+              //end: Alignment.bottomCenter,
+              //colors: [
+              //Color.fromARGB(255, 255, 255, 255),
+              //],
+              //stops: [0.1, 0.4, 0.7, 0.9],
+              //),
+              //),
+              //),
               Container(
                 height: double.infinity,
                 child: SingleChildScrollView(
