@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:practica1/todo_cubit.dart';
 import 'package:practica1/formulario.dart';
 
 class ListaT extends StatelessWidget {
@@ -7,30 +9,30 @@ class ListaT extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'To Do App',
-      home: ToDoList(),
+      home: BlocProvider<TodoCubit>(
+        create: (BuildContext context) => TodoCubit(),
+        child: ToDoList(),
+      ),
     );
   }
 }
 
-class ToDoList extends StatefulWidget {
-  @override
-  _ToDoListState createState() => _ToDoListState();
-}
-
-class _ToDoListState extends State<ToDoList> {
-  List<String> tasks = [];
-
+class ToDoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('To Do List'),
       ),
-      body: ListView.builder(
-        itemCount: tasks.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(tasks[index]),
+      body: BlocBuilder<TodoCubit, TodoState>(
+        builder: (context, state) {
+          return ListView.builder(
+            itemCount: state.tasks.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(state.tasks[index]),
+              );
+            },
           );
         },
       ),
@@ -38,14 +40,8 @@ class _ToDoListState extends State<ToDoList> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Formulario()),
-          ).then((newTask) {
-            if (newTask != null) {
-              setState(() {
-                tasks.add(newTask);
-              });
-            }
-          });
+            MaterialPageRoute(builder: (context) => TodoFormScreen()),
+          );
         },
         child: Icon(Icons.add),
       ),

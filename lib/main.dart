@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginScreen.nombrePagina: (BuildContext context) => LoginScreen(),
         ListaT.nombrePagina: (BuildContext context) => ListaT(),
-        Formulario.nombrePagina: (BuildContext context) => Formulario(),
+        TodoFormScreen.nombrePagina: (BuildContext context) => TodoFormScreen(),
       },
     );
   }
