@@ -6,6 +6,7 @@ import 'package:practica1/formulario.dart';
 
 class ListaT extends StatelessWidget {
   static final nombrePagina = "listado";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,6 +23,13 @@ class ToDoList extends StatelessWidget {
   final TextEditingController _taskController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
 
+  void _saveTask(BuildContext context) {
+    String task = _taskController.text;
+    String taskDate = _dateController.text;
+    context.read<TodoCubit>().saveTask(task, taskDate);
+    Navigator.pop(context, '$task - $taskDate');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +42,7 @@ class ToDoList extends StatelessWidget {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else {
+          } else if (state is TodoState) {
             return ListView.builder(
               itemCount: state.tasks.length,
               itemBuilder: (context, index) {
@@ -44,6 +52,8 @@ class ToDoList extends StatelessWidget {
                 );
               },
             );
+          } else {
+            return Container();
           }
         },
       ),
@@ -52,7 +62,13 @@ class ToDoList extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => TodoFormScreen()),
-          );
+          ).then((value) {
+            if (value != null) {
+              _taskController.text = value.split(' - ')[0];
+              _dateController.text = value.split(' - ')[1];
+              _saveTask(context);
+            }
+          });
         },
         child: Icon(Icons.add),
       ),

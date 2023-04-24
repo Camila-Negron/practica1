@@ -10,8 +10,7 @@ class TodoFormScreen extends StatelessWidget {
   void _saveTask(BuildContext context) {
     String task = _taskController.text;
     String taskDate = _dateController.text;
-    context.read<TodoCubit>().addTask(task);
-    context.read<TodoCubit>().addTaskDate(taskDate);
+    context.read<TodoCubit>().saveTask(task, taskDate);
     Navigator.pop(context, '$task - $taskDate');
   }
 
@@ -57,9 +56,7 @@ class TodoFormScreen extends StatelessWidget {
                 SizedBox(width: 16.0),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {
-                      _saveTask(context);
-                    },
+                    onPressed: () => _saveTask(context),
                     child: Text('Guardar'),
                   ),
                 ),
