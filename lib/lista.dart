@@ -20,16 +20,6 @@ class ListaT extends StatelessWidget {
 }
 
 class ToDoList extends StatelessWidget {
-  final TextEditingController _taskController = TextEditingController();
-  final TextEditingController _dateController = TextEditingController();
-
-  void _saveTask(BuildContext context) {
-    String task = _taskController.text;
-    String taskDate = _dateController.text;
-    context.read<TodoCubit>().saveTask(task, taskDate);
-    Navigator.pop(context, '$task - $taskDate');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +28,14 @@ class ToDoList extends StatelessWidget {
       ),
       body: BlocBuilder<TodoCubit, TodoState>(
         builder: (context, state) {
-          if (state is TodoState) {
+          if (state is LoadingTodoState) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is TodoState) {
+          } else if (state is LoadedTodoState) {
             return ListView.builder(
               itemCount: state.tasks.length,
-              itemBuilder: (context, index) {
+              itemBuilder: (BuildContext context, int index) {
                 return ListTile(
                   title: Text(state.tasks[index]),
                   subtitle: Text(state.taskDates[index]),
@@ -64,9 +54,10 @@ class ToDoList extends StatelessWidget {
             MaterialPageRoute(builder: (context) => TodoFormScreen()),
           ).then((value) {
             if (value != null) {
-              _taskController.text = value.split(' - ')[0];
-              _dateController.text = value.split(' - ')[1];
-              _saveTask(context);
+              List<String> taskAndDate = value.split(' - ');
+              String task = taskAndDate[0];
+              String taskDate = taskAndDate[1];
+              context.read<TodoCubit>().saveTask(task, taskDate);
             }
           });
         },

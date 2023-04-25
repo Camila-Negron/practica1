@@ -82,20 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Stack(
             children: <Widget>[
-              //Container(
-              //height: double.infinity,
-              //width: double.infinity,
-              //decoration: BoxDecoration(
-              //gradient: LinearGradient(
-              //begin: Alignment.topCenter,
-              //end: Alignment.bottomCenter,
-              //colors: [
-              //Color.fromARGB(255, 255, 255, 255),
-              //],
-              //stops: [0.1, 0.4, 0.7, 0.9],
-              //),
-              //),
-              //),
               Container(
                 height: double.infinity,
                 child: SingleChildScrollView(

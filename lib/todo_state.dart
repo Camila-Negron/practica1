@@ -1,22 +1,26 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
-import 'package:practica1/todo_cubit.dart';
 
-//part of 'todo_cubit.dart';
-
-//@immutable
-class TodoState extends Equatable {
-  final List<String> tasks;
-  final List<String> taskDates;
-  const TodoState({required this.tasks, required this.taskDates});
+abstract class TodoState extends Equatable {
+  const TodoState();
 
   @override
-  List<Object?> get props => [tasks, taskDates];
-
-  TodoState copyWith({List<String>? tasks, List<String>? taskDates}) {
-    return TodoState(
-      tasks: tasks ?? this.tasks,
-      taskDates: taskDates ?? this.taskDates,
-    );
-  }
+  List<Object> get props => [];
 }
+
+class LoadingTodoState extends TodoState {}
+
+class LoadedTodoState extends TodoState {
+  final List<String> tasks;
+  final List<String> taskDates;
+
+  const LoadedTodoState(this.tasks, this.taskDates);
+
+  @override
+  List<Object> get props => [tasks, taskDates];
+
+  @override
+  String toString() =>
+      'LoadedTodoState { tasks: $tasks, taskDates: $taskDates }';
+}
+
+class ErrorTodoState extends TodoState {}

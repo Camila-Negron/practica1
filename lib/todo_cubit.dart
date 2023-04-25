@@ -1,18 +1,30 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 import 'package:practica1/todo_state.dart';
-//part 'todo_state.dart';
+
 
 class TodoCubit extends Cubit<TodoState> {
-  TodoCubit() : super(TodoState(tasks: [], taskDates: []));
+  // Lista privada de tareas y fechas de tareas
+  List<String> _tasks = [];
+  List<String> _taskDates = [];
 
-  void saveTask(String task, String taskDate) {
-    final currentState = state;
-    final List<String> updatedTasks = List.from(currentState.tasks)..add(task);
-    final List<String> updatedTaskDates = List.from(currentState.taskDates)
-      ..add(taskDate);
-    emit(currentState.copyWith(
-        tasks: updatedTasks, taskDates: updatedTaskDates));
+  // El estado inicial es LoadingTodoState
+  TodoCubit() : super(LoadingTodoState());
+
+  Future<void> saveTask(String task, String taskDate) async {
+    try {
+      // Simulamos guardar la tarea en una base de datos o red
+      await Future.delayed(Duration(seconds: 1));
+
+      // Agregamos la tarea a la lista de tareas y fechas de tareas
+      _tasks.add(task);
+      _taskDates.add(taskDate);
+
+      // Emitimos un estado LoadedTodoState con las nuevas listas de tareas y fechas de tareas
+      emit(LoadedTodoState(_tasks, _taskDates));
+    } catch (e) {
+      // Si ocurre un error, emitimos un estado ErrorTodoState
+      emit(ErrorTodoState());
+    }
   }
 }
