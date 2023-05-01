@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practica1/todo_cubit.dart';
 import 'package:practica1/todo_state.dart';
 import 'package:practica1/formulario.dart';
-
+import 'package:practica1/GuardarEtiqueta.dart';
 
 class ListaT extends StatelessWidget {
   static final nombrePagina = "listado";

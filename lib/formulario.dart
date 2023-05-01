@@ -59,18 +59,12 @@ class TodoFormScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 16.0),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      GuardarEtiqueta.nombrePagina,
-                    );
-                  },
-                  child: Text(
-                    'Editar',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'guardar_etiqueta');
+                    },
+                    child: Text('Editar'),
                   ),
                 ),
               ],

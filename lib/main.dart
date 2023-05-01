@@ -4,10 +4,10 @@ import 'package:practica1/login.dart';
 import 'package:practica1/lista.dart';
 import 'package:practica1/formulario.dart';
 import 'package:practica1/todo_cubit.dart';
-import 'package:practica1/drop_cubit.dart';
 import 'package:provider/provider.dart';
 
-import 'GuardarEtiqueta.dart';
+import 'drop_cubit.dart';
+import 'package:practica1/GuardarEtiqueta.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,27 +21,23 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<TodoCubit>(
-          create: (context) => TodoCubit(),
+          create: (context) =>
+              //ComboBoxCubit(['Trabajo', 'Universidad', 'Casa']),
+              TodoCubit(),
         ),
         Provider<TodoFormCubit>(
           create: (context) => TodoFormCubit([]),
         ),
-        //Provider<ComboBoxCubit>(
-        //create: (context) => ComboBoxCubit(['Trabajo', 'Universidad', 'Casa']),
-        //),
+        Provider<GuardarEtiqueta>(
+          create: (context) => GuardarEtiqueta(const []),
+        )
       ],
       child: MaterialApp(
         title: 'Practica 1.2',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: LoginScreen.nombrePagina,
-        routes: {
-          LoginScreen.nombrePagina: (context) => LoginScreen(),
-          ListaT.nombrePagina: (context) => ListaT(),
-          TodoFormScreen.nombrePagina: (context) => TodoFormScreen(),
-          GuardarEtiqueta.nombrePagina: (context) => GuardarEtiqueta(),
-        },
+        home: LoginScreen(),
       ),
     );
   }
