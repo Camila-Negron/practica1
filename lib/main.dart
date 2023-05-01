@@ -6,7 +6,7 @@ import 'package:practica1/formulario.dart';
 import 'package:practica1/todo_cubit.dart';
 import 'package:provider/provider.dart';
 
-import 'drop_cubit.dart';
+import 'package:practica1/drop_cubit.dart';
 import 'package:practica1/GuardarEtiqueta.dart';
 
 void main() {
@@ -27,9 +27,6 @@ class MyApp extends StatelessWidget {
         ),
         Provider<TodoFormCubit>(
           create: (context) => TodoFormCubit([]),
-        ),
-        Provider<GuardarEtiqueta>(
-          create: (context) => GuardarEtiqueta(const []),
         )
       ],
       child: MaterialApp(
