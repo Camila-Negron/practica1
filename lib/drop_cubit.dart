@@ -14,4 +14,10 @@ class TodoFormCubit extends Cubit<TodoFormState> {
   void updateSelectedDropdownItem(String selectedItem) {
     emit(state.copyWith(selectedDropdownItem: selectedItem));
   }
+
+  void addItem(String item) {
+    final items = state.dropdownItems.toList();
+    items.add(item);
+    emit(state.copyWith(dropdownItems: items));
+  }
 }

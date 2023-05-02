@@ -64,7 +64,12 @@ class TodoFormScreen extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, 'guardar_etiqueta');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GuardarEtiqueta(),
+                        ),
+                      );
                     },
                     child: Text('Editar'),
                   ),

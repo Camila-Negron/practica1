@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'lista.dart';
 import 'package:flutter/services.dart';
+import 'package:practica1/todo_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -56,11 +58,13 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ListaT()),
-          );
+        onPressed: () async {
+          if (await context
+              .read<TodoCubit>()
+              .comprobarUsuario(emailController.text, passController.text)) {
+            Navigator.push<void>(context,
+                MaterialPageRoute(builder: (BuildContext context) => ListaT()));
+          }
         },
         child: Text('Iniciar Sesión'),
         style: ElevatedButton.styleFrom(
