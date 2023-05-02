@@ -1,6 +1,8 @@
-# practica1
+# practica1_2
 
 A new Flutter project.
+
+Se esta utilizando el mismo git pero las funcionalidades que se pide para esta practica estan implementadas con cubit
 
 ## Getting Started
 
