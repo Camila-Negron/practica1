@@ -14,6 +14,7 @@ class TodoFormScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final todoFormCubit = context.watch<TodoFormCubit>();
+    String? dropdownValue = 'Trabajo';
 
     return Scaffold(
       appBar: AppBar(
@@ -49,6 +50,7 @@ class TodoFormScreen extends StatelessWidget {
                     value: todoFormCubit.state.selectedDropdownItem,
                     onChanged: (newValue) {
                       todoFormCubit.updateSelectedDropdownItem(newValue!);
+                      dropdownValue = newValue;
                     },
                     items: todoFormCubit.state.dropdownItems
                         .map((item) => DropdownMenuItem(
@@ -85,8 +87,10 @@ class TodoFormScreen extends StatelessWidget {
                     onPressed: () {
                       String task = _taskController.text;
                       String taskDate = _dateController.text;
-                      context.read<TodoCubit>().saveTask(task, taskDate);
-                      Navigator.pop(context, '$task - $taskDate');
+                      context
+                          .read<TodoCubit>()
+                          .add(TodoState(task, taskDate, dropdownValue!));
+                      Navigator.pop(context);
                     },
                     child: Text('Guardar'),
                   ),

@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         Provider<TodoCubit>(
           create: (context) =>
               //ComboBoxCubit(['Trabajo', 'Universidad', 'Casa']),
-              TodoCubit(),
+              TodoCubit([]),
         ),
         Provider<TodoFormCubit>(
           create: (context) => TodoFormCubit([]),

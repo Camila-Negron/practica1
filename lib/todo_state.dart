@@ -1,26 +1,27 @@
-import 'package:equatable/equatable.dart';
+class TodoState {
+  String _nombre, _fecha, _etiqueta;
 
-abstract class TodoState extends Equatable {
-  const TodoState();
+  TodoState(this._nombre, this._fecha, this._etiqueta);
 
-  @override
-  List<Object> get props => [];
+  String get nombre => _nombre;
+  String get fecha => _fecha;
+  String get etiqueta => _etiqueta;
+
+  set nombre(String nuevoNombre) {
+    if (nuevoNombre.length <= 255) {
+      this._nombre = nuevoNombre;
+    }
+  }
+
+  set fecha(String nuevaFecha) {
+    if (nuevaFecha.length <= 255) {
+      this._fecha = nuevaFecha;
+    }
+  }
+
+  set etiqueta(String nuevaEtiqueta) {
+    if (nuevaEtiqueta.length <= 255) {
+      this._etiqueta = nuevaEtiqueta;
+    }
+  }
 }
-
-class LoadingTodoState extends TodoState {}
-
-class LoadedTodoState extends TodoState {
-  final List<String> tasks;
-  final List<String> taskDates;
-
-  const LoadedTodoState(this.tasks, this.taskDates);
-
-  @override
-  List<Object> get props => [tasks, taskDates];
-
-  @override
-  String toString() =>
-      'LoadedTodoState { tasks: $tasks, taskDates: $taskDates }';
-}
-
-class ErrorTodoState extends TodoState {}
